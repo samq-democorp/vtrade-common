@@ -1,0 +1,22 @@
+name: Maven Build & Publish GitHub Package
+
+on:
+  push:
+    branches: [ release* ]
+
+jobs:
+  build:
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Build & deploy with Maven
+      run: mvn deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/${{github.repository}}
