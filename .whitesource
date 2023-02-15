@@ -3,5 +3,6 @@
   "remediateSettings": {
     "workflowRules": {
       "enabled": true
+      }
     }
 }
