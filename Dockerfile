@@ -14,5 +14,9 @@ COPY /target/text4shell-poc.jar /app
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
+# Mend traceability labels
+LABEL io.mend.image.dockerfile.path=Dockerfile
+LABEL org.opencontainers.image.source=https://github.com/samq-democorp/vtrade-common
+
 # Run jar file when the container launches
 CMD ["java", "-jar", "text4shell-poc.jar"]
